@@ -30,7 +30,7 @@ wiki = WikipediaQueryRun(api_wrapper=api_wrapper)
 
 search = DuckDuckGoSearchRun(name="Search")
 
-st.title("🔎 SkyChat 5.0.0 - SEO LangChain App")
+st.title("👽 SkyChat 5.0.0 - SEO LangChain App")
 
 
 # Sidebar for settings
