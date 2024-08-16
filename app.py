@@ -31,10 +31,7 @@ wiki = WikipediaQueryRun(api_wrapper=api_wrapper)
 search = DuckDuckGoSearchRun(name="Search")
 
 st.title("🔎 SkyChat 5.0.0 - SEO LangChain App")
-"""
-In this example, we're using `StreamlitCallbackHandler` to display the thoughts and actions of an agent in an interactive Streamlit app.
-Try more LangChain 🤝 Streamlit Agent examples at [github.com/langchain-ai/streamlit-agent](https://github.com/langchain-ai/streamlit-agent).
-"""
+
 
 # Sidebar for settings
 st.sidebar.title("Settings")
