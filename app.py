@@ -10,16 +10,13 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-# CSS for custom fonts
-st.markdown("""
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-    
-    html, body, [class*="css"]  {
-        font-family: 'Roboto', sans-serif;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+# Retrieve the API key from the environment variables
+api_key = os.getenv("GROQ_API_KEY")
+
+# Check if the API key is available
+if not api_key:
+    st.error("API key is missing. Please make sure it's set in the .env file.")
+    st.stop()
 
 # Arxiv and Wikipedia Tools
 arxiv_wrapper = ArxivAPIWrapper(top_k_results=1, doc_content_chars_max=200)
@@ -30,19 +27,22 @@ wiki = WikipediaQueryRun(api_wrapper=api_wrapper)
 
 search = DuckDuckGoSearchRun(name="Search")
 
-st.title("👽 SkyChat 5.0.0 - SEO LangChain App")
+# Custom Fonts
+st.markdown("""
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+    
+    html, body, [class*="css"]  {
+        font-family: 'Roboto', sans-serif;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
-
-# Sidebar for settings
-st.sidebar.title("Settings")
-api_key_input = st.sidebar.text_input("Enter your Groq API Key (Leave blank to use .env key):", type="password")
-
-# Retrieve API key
-api_key = api_key_input or os.getenv("GROQ_API_KEY")
-
-if not api_key:
-    st.sidebar.error("Please provide an API key via the input or .env file.")
-    st.stop()
+st.title("🔎 SkyChat 5.0.0 - SEO LangChain App")
+"""
+In this example, we're using `StreamlitCallbackHandler` to display the thoughts and actions of an agent in an interactive Streamlit app.
+Try more LangChain 🤝 Streamlit Agent examples at [github.com/langchain-ai/streamlit-agent](https://github.com/langchain-ai/streamlit-agent).
+"""
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
