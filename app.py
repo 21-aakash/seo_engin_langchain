@@ -10,6 +10,17 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
+# CSS for custom fonts
+st.markdown("""
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+    
+    html, body, [class*="css"]  {
+        font-family: 'Roboto', sans-serif;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 # Arxiv and Wikipedia Tools
 arxiv_wrapper = ArxivAPIWrapper(top_k_results=1, doc_content_chars_max=200)
 arxiv = ArxivQueryRun(api_wrapper=arxiv_wrapper)
@@ -19,7 +30,7 @@ wiki = WikipediaQueryRun(api_wrapper=api_wrapper)
 
 search = DuckDuckGoSearchRun(name="Search")
 
-st.title("🔎 LangChain - Chat with search")
+st.title("🔎 SkyChat 5.0.0 - SEO LangChain App")
 """
 In this example, we're using `StreamlitCallbackHandler` to display the thoughts and actions of an agent in an interactive Streamlit app.
 Try more LangChain 🤝 Streamlit Agent examples at [github.com/langchain-ai/streamlit-agent](https://github.com/langchain-ai/streamlit-agent).
